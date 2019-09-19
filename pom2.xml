@@ -97,6 +97,7 @@
             </snapshots>
         </repository>
     </repositories>
+
     <!-- 远程插件仓库 -->
     <pluginRepositories>
         <pluginRepository>
@@ -105,6 +106,22 @@
             <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
         </pluginRepository>
     </pluginRepositories>
+         
+    <!-- 指定 maven 发布构建的位置 -->
+    <distributionManagement>
+        <!-- 正式库 -->
+        <repository>
+            <id>xxx</id>
+            <name>xxx</name>
+            <url>xxx</url>
+        </repository>
+        <!-- 快照库 -->
+        <snapshotRepository>
+            <id>xxx</id>
+            <name>xxx</name>
+            <url>xxx</url>
+        </snapshotRepository>
+    </distributionManagement>
 
     <!-- 多模块 -->
     <modules>
