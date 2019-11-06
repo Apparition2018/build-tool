@@ -97,7 +97,6 @@
             </snapshots>
         </repository>
     </repositories>
-
     <!-- 远程插件仓库 -->
     <pluginRepositories>
         <pluginRepository>
