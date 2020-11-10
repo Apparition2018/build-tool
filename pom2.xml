@@ -106,7 +106,7 @@
             <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
         </pluginRepository>
     </pluginRepositories>
-         
+
     <!-- 指定 maven 发布构建的位置 -->
     <distributionManagement>
         <!-- 正式库 -->
