@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>todo</title>
+</head>
+<body>
+<h1>Todo-web</h1>
+<label for="name">请输入待办事项名称：</label><input id="name" type="text">
+<button onclick="addTodo()">添加</button>
+<h3>待办事项列表：</h3>
+<div id="list"></div>
+<script type="text/javascript">
+    function addTodo() {
+        let name = document.getElementById('name').value
+        let list = document.getElementById('list')
+        list.innerHTML = list.innerHTML + "<p>"+name+"</p>"
+    }
+</script>
+</body>
+</html>
