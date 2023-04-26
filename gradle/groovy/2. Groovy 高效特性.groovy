@@ -32,19 +32,19 @@ println buildYears.ant
 println buildYears['gradle']
 
 // 6 闭包
-def c1 = {
-    v -> print v
+def c1 = { v -> print v
 }
 def c2 = {
     print 'hello'
 }
 
 static def m1(Closure closure) {
-    closure'param'
+    closure 'param'
 }
 
 static def m2(Closure closure) {
     closure()
 }
+
 m1(c1)
 m2(c2)

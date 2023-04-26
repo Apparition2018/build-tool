@@ -1,0 +1,15 @@
+// Gradle 统一依赖管理：https://blog.csdn.net/unreliable_narrator/article/details/128705238
+ext {
+    versions = [
+            hibernate    : "5.3.20.Final",
+            logback      : "1.2.9",
+            junit_jupiter: "5.9.2"
+    ]
+
+    libs = [
+            hibernate    : "org.hibernate:hibernate-core:${versions.hibernate}",
+            logback      : "ch.qos.logback:logback-classic:${versions.logback}",
+            junit_jupiter_api: "org.junit.jupiter:junit-jupiter-api:${versions.junit_jupiter}",
+            junit_jupiter_engine: "org.junit.jupiter:junit-jupiter-engine"
+    ]
+}

@@ -3,37 +3,41 @@
 group = 'com.ljh'
 version = '1.0-SNAPSHOT'
 
+apply from: 'version.gradle'
+
 allprojects {
     apply plugin: 'java'
-    sourceCompatibility = 1.8
-    targetCompatibility = 1.8
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
 
-    tasks.withType(JavaCompile) {
-        options.encoding = "UTF-8"
+    tasks.withType(JavaCompile).configureEach {
+        options.encoding = 'UTF-8'
     }
-    
+
+    // https://docs.gradle.org/current/userguide/declaring_repositories.html
     repositories {
         mavenLocal()
         maven { url 'https://maven.aliyun.com/repository/public' }
-        jcenter()
         mavenCentral()
     }
 
+    // https://docs.gradle.org/current/userguide/declaring_dependencies.html
     dependencies {
-        implementation('org.hibernate:hibernate-core:3.6.3.Final') {
+        // Removal of compile and runtime configurations：https://docs.gradle.org/current/userguide/upgrading_version_6.html#sec:configuration_removal
+        implementation(libs.hibernate) {
             // 排除依赖
             // exclude group: 'org.slf4j', module: 'slf4j-api'
         }
-        apiElements group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
-        testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
-        testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+        implementation libs.logback
+        testImplementation libs.junit_jupiter_api
+        testRuntimeOnly libs.junit_jupiter_engine
     }
 }
 subprojects {
-    
+
 }
 
-configurations.all {
+configurations.configureEach {
     resolutionStrategy {
         // 使默认版本冲突策略失效（默认使用相对较高的版本）
         // failOnVersionConflict()
@@ -55,13 +59,13 @@ def createDir = {
         }
 }
 // 自定义任务
-task makeJavaDir() {
+tasks.register('makeJavaDir') {
     def paths = ['src/main/java', 'src/main/resources', 'src/test/java', 'src/test/resources']
     doFirst {
         paths.forEach(createDir)
     }
 }
-task makeWebDir() {
+tasks.register('makeWebDir') {
     dependsOn 'makeJavaDir'
     def paths = ['src/main/webapp']
     doLast {

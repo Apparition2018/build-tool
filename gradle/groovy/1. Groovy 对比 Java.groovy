@@ -1,6 +1,6 @@
 class ProjectVersion {
-    private int major;
-    private int minor;
+    private int major
+    private int minor
 
     ProjectVersion(int major, int minor) {
         this.major = major
